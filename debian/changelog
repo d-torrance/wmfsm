@@ -1,0 +1,76 @@
+wmfsm (0.33-2) unstable; urgency=low
+
+  * corrected speling error in description, closes: Bug#125491
+
+ -- Arthur Korn <arthur@korn.ch>  Tue, 18 Dec 2001 22:13:56 +0100
+
+wmfsm (0.33-1) unstable; urgency=low
+
+  * New upstream release
+    - autoconf
+
+ -- Arthur Korn <arthur@korn.ch>  Sat, 20 Jan 2001 16:06:04 +0100
+
+wmfsm (0.31-9) unstable; urgency=low
+
+  * Added menu hints
+
+ -- Arthur Korn <arthur@korn.ch>  Sun, 14 Jan 2001 17:06:04 +0100
+
+wmfsm (0.31-8) unstable; urgency=low
+
+  * Adapted Build-Depends to new libs (see changelog of last version).
+
+ -- Arthur Korn <arthur@korn.ch>  Sat, 18 Nov 2000 21:42:29 +0100
+
+wmfsm (0.31-7) unstable; urgency=low
+
+  * recompile without libc5 dependency (libxpm4.7) (Closes: Bug#77277).
+
+ -- Arthur Korn <arthur@korn.ch>  Fri, 17 Nov 2000 22:25:44 +0100
+
+wmfsm (0.31-6) unstable; urgency=low
+
+  * control: changed maintainer address to arthur@debian.org.
+  * This time including full source in upload.
+
+ -- Arthur Korn <arthur@korn.ch>  Wed, 15 Nov 2000 20:36:47 +0100
+
+wmfsm (0.31-5) unstable; urgency=low
+
+  * wmfsm.1: wrote a manpage.
+  * control: changed section to utils.
+
+ -- Arthur Korn <arthur@korn.ch>  Sun,  8 Oct 2000 10:43:21 +0200
+
+wmfsm (0.31-4) unstable; urgency=low
+
+  * rules: evaluating DEB_BUILD_OPTIONS now.
+  * rules: installing into /usr/bin, not /usr/X11R6/bin.
+  * undocumented: changed section from 1x to 1.
+  * menu: /usr/bin/X11/wmnd -> /usr/bin/wmnd.
+
+ -- Arthur Korn <arthur@korn.ch>  Wed,  4 Oct 2000 13:24:02 +0200
+
+wmfsm (0.31-3) unstable; urgency=low
+
+  * rules: now building with -Wall -g -O2
+
+ -- Arthur Korn <arthur@korn.ch>  Sat, 29 Jul 2000 17:11:56 +0200
+
+wmfsm (0.31-2) unstable; urgency=low
+
+  * Make the debianisation diff only contain debian/*
+  * control: made the description more verbose
+
+ -- Arthur Korn <arthur@korn.ch>  Fri, 14 Jul 2000 22:40:09 +0200
+
+wmfsm (0.31-1) unstable; urgency=low
+
+  * Initial Release.
+
+ -- Arthur Korn <arthur@korn.ch>  Tue, 11 Jul 2000 22:58:37 +0200
+
+Local variables:
+mode: debian-changelog
+End:

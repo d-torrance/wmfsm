@@ -1,0 +1,16 @@
+Source: wmfsm
+Section: utils
+Priority: optional
+Maintainer: Arthur Korn <arthur@debian.org>
+Standards-Version: 3.0.1
+Build-Depends: debhelper, xlibs-dev
+
+Package: wmfsm
+Architecture: any
+Depends: ${shlibs:Depends}
+Description: WindowMaker dock app for monitoring filesystem usage
+ Nice graphical 'df', showing you to what degree the mounted
+ filesystems are used.
+ .
+ Another X11 dockable application designed for WindowMaker.
+ It works with other window managers as well.
