@@ -1,3 +1,55 @@
+wmfsm (0.34-6) unstable; urgency=low
+
+  * Fixed filesystem name corruption, thanks to Ralf Horstmann and Cristian
+    Ionescu-Idbohrn for the patch.
+
+ -- Arthur Korn <arthur@korn.ch>  Wed, 25 Aug 2004 01:29:58 +0200
+
+wmfsm (0.34-5) unstable; urgency=low
+
+  * wmfsm.sample: adapted to the wealth of pseudo-fs in current linux
+    systems. closes: #226298
+  * debian/watch removed, upstream's dead.
+  * wmfsm.1: made a point on the strictness of wmfsmrc format, closes: #226274
+  * memleak news: avoid it if there are more than 9 filesystems too.
+  * Standards-Version 3.6.1.0 without changes.
+
+ -- Arthur Korn <arthur@korn.ch>  Wed, 17 Mar 2004 13:04:33 +0100
+
+wmfsm (0.34-4) unstable; urgency=low
+
+  * fixed memleak introduced in 0.34-2 with the patch by Timo Benk.
+    global char *mp[] was assigned the result of stdup() repeatedly
+    without free. My ugly fix is to free it all up at the beginning of
+    readFileSystems(). Now I'm a proud Perl coder ... closes: #196057
+
+ -- Arthur Korn <arthur@korn.ch>  Wed,  2 Jul 2003 23:05:21 +0200
+
+wmfsm (0.34-3) unstable; urgency=low
+
+  * ran aclocal and updated config.sub and config.guess
+    closes: #174686, #187602
+
+ -- Arthur Korn <arthur@korn.ch>  Wed,  2 Jul 2003 23:04:55 +0200
+
+wmfsm (0.34-2) unstable; urgency=low
+
+  * Added Build-Depends on automake1.6, closes: #175082
+  * updated config.{sub,guess} from autotools-dev.
+  * Applied patch by Timo Benk that makes wmfsm reread the filesystems list
+    during it's life, closes: #186826
+
+ -- Arthur Korn <arthur@korn.ch>  Tue,  1 Apr 2003 11:25:11 +0200
+
+wmfsm (0.34-1) unstable; urgency=low
+
+  * New upstream release
+  * rules: new DEB_BUILD_OPTIONS syntax
+  * Standards-Version: 3.5.8
+  * building upstream changelog by concatenating Changelog{,.old}
+
+ -- Arthur Korn <arthur@korn.ch>  Tue, 17 Dec 2002 11:10:00 +0100
+
 wmfsm (0.33-2) unstable; urgency=low
 
   * corrected speling error in description, closes: Bug#125491

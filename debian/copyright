@@ -3,7 +3,7 @@ Tue, 11 Jul 2000 22:58:37 +0200.
 
 It was downloaded from http://www.cs.mcgill.ca/~cgray4/
 
-Upstream Author(s):
+Upstream Authors:
 Chris Gray <cgray@tribsoft.com>
 originally written by Stefan Eilemann <Stefan.Eilemann@sgi.com>
 
@@ -11,4 +11,4 @@ Copyright:
 
 GNU GPL version 2.
 
-See /usr/share/common-licenses/GPL.
+See /usr/share/common-licenses/GPL2 for full licence text.

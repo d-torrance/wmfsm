@@ -10,22 +10,28 @@ export DH_COMPAT=1
 
 dest = $(shell pwd)/debian/tmp/usr/
 
-cflags="-Wall -O2"
+CFLAGS=-Wall -g
 
-ifneq (,$(findstring debug,$(DEB_BUILD_OPTIONS)))
-  cflags +=" -g"
+ifneq (,$(findstring noopt,$(DEB_BUILD_OPTIONS)))
+  CFLAGS+=-O0
+else
+  CFLAGS+=-O2
 endif
 ifneq (,$(findstring nostrip,$(DEB_BUILD_OPTIONS)))
-  stripargs =" --no-act"
+  STRIPARGS= --no-act
 endif
 
 build: build-stamp
 build-stamp:
 	dh_testdir
 
+	echo $$DH_COMPAT > debian/compat
+
 	./configure --prefix=/usr --mandir=\$${prefix}/share/man \
 	    --host=$(DEB_HOST_GNU_TYPE) --target=$(DEB_BUILD_GNU_TYPE)
-	$(MAKE) CFLAGS=$(cflags)
+	$(MAKE) CFLAGS="$(CFLAGS)"
+
+	cat ChangeLog ChangeLog.old > debian/upstreamchangelog
 
 	touch build-stamp
 
@@ -34,8 +40,10 @@ clean:
 	dh_testroot
 	rm -f build-stamp
 
-	-make distclean
+	rm -f debian/upstreamchangelog
 
+	-make distclean
+	
 	dh_clean
 
 install: build
@@ -55,9 +63,9 @@ binary-arch: build install
 	dh_installexamples
 	dh_installmenu
 	dh_installmanpages
-	dh_installchangelogs ChangeLog
+	dh_installchangelogs debian/upstreamchangelog
 	dh_link
-	dh_strip $(stripargs)
+	dh_strip $(STRIPARGS)
 	dh_compress
 	dh_fixperms
 	dh_installdeb

@@ -2,8 +2,8 @@ Source: wmfsm
 Section: utils
 Priority: optional
 Maintainer: Arthur Korn <arthur@debian.org>
-Standards-Version: 3.0.1
-Build-Depends: debhelper, xlibs-dev
+Standards-Version: 3.6.1.0
+Build-Depends: debhelper, xlibs-dev, automake1.6
 
 Package: wmfsm
 Architecture: any
