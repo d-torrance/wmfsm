@@ -5,10 +5,7 @@
 # Uncomment this to turn on verbose mode.
 #export DH_VERBOSE=1
 
-# This is the debhelper compatability version to use.
-export DH_COMPAT=1
-
-dest = $(shell pwd)/debian/tmp/usr/
+dest = $(shell pwd)/debian/wmfsm/usr/
 
 CFLAGS=-Wall -g
 
@@ -21,14 +18,17 @@ ifneq (,$(findstring nostrip,$(DEB_BUILD_OPTIONS)))
   STRIPARGS= --no-act
 endif
 
+ifeq ($(DEB_BUILD_GNU_TYPE), $(DEB_HOST_GNU_TYPE))
+  confflags += --build $(DEB_HOST_GNU_TYPE)
+else
+  confflags += --build $(DEB_BUILD_GNU_TYPE) --host $(DEB_HOST_GNU_TYPE)
+endif
+
 build: build-stamp
 build-stamp:
 	dh_testdir
 
-	echo $$DH_COMPAT > debian/compat
-
-	./configure --prefix=/usr --mandir=\$${prefix}/share/man \
-	    --host=$(DEB_HOST_GNU_TYPE) --target=$(DEB_BUILD_GNU_TYPE)
+	./configure --prefix=/usr --mandir=\$${prefix}/share/man $(confflags)
 	$(MAKE) CFLAGS="$(CFLAGS)"
 
 	cat ChangeLog ChangeLog.old > debian/upstreamchangelog
@@ -43,7 +43,12 @@ clean:
 	rm -f debian/upstreamchangelog
 
 	-make distclean
-	
+
+	-test -r /usr/share/misc/config.sub && \
+	   cp -f /usr/share/misc/config.sub config.sub
+	-test -r /usr/share/misc/config.guess && \
+	   cp -f /usr/share/misc/config.guess config.guess
+
 	dh_clean
 
 install: build

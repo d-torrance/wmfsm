@@ -1,3 +1,14 @@
+wmfsm (0.34-7) unstable; urgency=low
+
+  * remove build dependency on automake1.6
+  * add build depnedency on autotools-dev and no update config.{sub,guess} in
+    clean target, correctly call ./configure
+  * standards version 3.6.2.0 without changes.
+  * update to debhelper compat level 4 with minor changes
+  * docs: remove NEWS (that file is empty?!) and TODO (out of date)
+
+ -- Arthur Korn <arthur@debian.org>  Sun, 31 Jul 2005 23:48:07 +0200
+
 wmfsm (0.34-6) unstable; urgency=low
 
   * Fixed filesystem name corruption, thanks to Ralf Horstmann and Cristian
