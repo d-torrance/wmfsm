@@ -1,3 +1,11 @@
+wmfsm (0.34-8) unstable; urgency=low
+
+  * rules: fix timestamps of various autoconfig related files to
+    avoid unnecessary rebuild (and the dependency on autoconf).
+    closes: #321011
+
+ -- Arthur Korn <arthur@debian.org>  Wed,  3 Aug 2005 01:02:58 +0200
+
 wmfsm (0.34-7) unstable; urgency=low
 
   * remove build dependency on automake1.6

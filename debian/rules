@@ -49,6 +49,16 @@ clean:
 	-test -r /usr/share/misc/config.guess && \
 	   cp -f /usr/share/misc/config.guess config.guess
 
+	# fix timestamps which are wrong in .orig.tar.gz
+	find . -name Makefile.am -exec touch {} \;
+	find . -name configure.in -exec touch {} \;
+	find . -name aclocal.m4 -exec touch {} \;
+	find . -name configure -exec touch {} \;
+	find . -name config.h.in -exec touch {} \;
+	find . -name Makefile.in -exec touch {} \;
+	find . -name config.h -exec touch {} \;
+	find . -name Makefile -exec touch {} \;
+
 	dh_clean
 
 install: build
