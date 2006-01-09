@@ -3,7 +3,7 @@ Section: utils
 Priority: optional
 Maintainer: Arthur Korn <arthur@debian.org>
 Standards-Version: 3.6.2.0
-Build-Depends: debhelper (>= 4), xlibs-dev, autotools-dev
+Build-Depends: debhelper (>= 4), libx11-dev, libxext-dev, libxpm-dev, x-dev, autotools-dev
 
 Package: wmfsm
 Architecture: any

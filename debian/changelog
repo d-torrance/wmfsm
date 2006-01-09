@@ -1,3 +1,11 @@
+wmfsm (0.34-9) unstable; urgency=low
+
+  * control: replaced build-dependency on xlibs-dev by detailed
+    build-dependencies according to the xlibs-split tool.
+    closes: #346889
+
+ -- Arthur Korn <arthur@debian.org>  Mon,  9 Jan 2006 19:31:15 +0100
+
 wmfsm (0.34-8) unstable; urgency=low
 
   * rules: fix timestamps of various autoconfig related files to
