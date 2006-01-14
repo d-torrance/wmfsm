@@ -1,3 +1,10 @@
+wmfsm (0.34-10) unstable; urgency=low
+
+  * configure: rebuild with autoconf 2.59a-7 to fix tests for X11
+    libraries, closes: #347639, #346889
+
+ -- Arthur Korn <arthur@debian.org>  Sat, 14 Jan 2006 15:40:46 +0100
+
 wmfsm (0.34-9) unstable; urgency=low
 
   * control: replaced build-dependency on xlibs-dev by detailed
