@@ -1,3 +1,9 @@
+wmfsm (0.34-11) unstable; urgency=low
+
+  * Standards-Version updated to 3.7.2.2 without changes
+
+ -- Arthur Korn <arthur@debian.org>  Mon, 12 Feb 2007 21:22:47 +0100
+
 wmfsm (0.34-10) unstable; urgency=low
 
   * configure: rebuild with autoconf 2.59a-7 to fix tests for X11
