@@ -1,7 +1,7 @@
 Source: wmfsm
 Section: utils
 Priority: optional
-Maintainer: Arthur Korn <arthur@debian.org>
+Maintainer: Debian QA Group <packages@qa.debian.org>
 Standards-Version: 3.7.2.2
 Build-Depends: debhelper (>= 4), libx11-dev, libxext-dev, libxpm-dev, x-dev, autotools-dev
 
