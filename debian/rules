@@ -1,9 +1,4 @@
 #!/usr/bin/make -f
-# Sample debian/rules that uses debhelper.
-# GNU copyright 1997 to 1999 by Joey Hess.
-
-# Uncomment this to turn on verbose mode.
-#export DH_VERBOSE=1
 
 dest = $(shell pwd)/debian/wmfsm/usr/
 
@@ -39,10 +34,9 @@ clean:
 	dh_testdir
 	dh_testroot
 	rm -f build-stamp
-
 	rm -f debian/upstreamchangelog
 
-	-make distclean
+	[ ! -f Makefile ] || $(MAKE) distclean
 
 	-test -r /usr/share/misc/config.sub && \
 	   cp -f /usr/share/misc/config.sub config.sub
@@ -58,16 +52,14 @@ clean:
 	find . -name Makefile.in -exec touch {} \;
 	find . -name config.h -exec touch {} \;
 	find . -name Makefile -exec touch {} \;
-
 	dh_clean
 
 install: build
 	dh_testdir
 	dh_testroot
-	dh_clean -k
+	dh_prep
 	dh_installdirs
-
-	make install prefix=$(dest)
+	$(MAKE) install prefix=$(dest)
 
 binary-indep: build install
 
@@ -91,5 +83,3 @@ binary-arch: build install
 
 binary: binary-indep binary-arch
 .PHONY: build clean binary-indep binary-arch binary install
-
-# vim:nosta

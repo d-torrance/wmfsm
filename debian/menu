@@ -1,6 +1,6 @@
 ?package(wmfsm):\
   needs="X11"\
-  section="Apps/System"\
+  section="Applications/System/Administration"\
   title="WMfsm"\
   hints="Monitoring,Dockapp"\
   command="/usr/bin/wmfsm"

@@ -1,3 +1,20 @@
+wmfsm (0.34-13) unstable; urgency=low
+
+  * QA upload.
+  * Replace deprecated build-dependency on x-dev with x11proto-core-dev.
+    (Closes: #515405)
+  * Add ${misc:Depends} substvar to binary package
+  * Use "Applications/System/Administration" menu section instead of
+    "Apps/System".
+  * debian/rules:
+    - Don't ignore errors in clean target
+    - Don't use deprecated "dh_clean -k"
+  * Update debian/copyright.
+  * Bump Standards-Version to 3.8.2.
+  * Move to debhelper 7.
+
+ -- Chris Lamb <lamby@debian.org>  Tue, 28 Jul 2009 15:18:19 +0200
+
 wmfsm (0.34-12) unstable; urgency=low
 
   * orphaned: set maintainer to QA

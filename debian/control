@@ -2,12 +2,12 @@ Source: wmfsm
 Section: utils
 Priority: optional
 Maintainer: Debian QA Group <packages@qa.debian.org>
-Standards-Version: 3.7.2.2
-Build-Depends: debhelper (>= 4), libx11-dev, libxext-dev, libxpm-dev, x-dev, autotools-dev
+Standards-Version: 3.8.2
+Build-Depends: debhelper (>= 7), libx11-dev, libxext-dev, libxpm-dev, x11proto-core-dev, autotools-dev
 
 Package: wmfsm
 Architecture: any
-Depends: ${shlibs:Depends} ${misc:Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: WindowMaker dock app for monitoring filesystem usage
  Nice graphical 'df', showing you to what degree the mounted
  filesystems are used.
