@@ -1,0 +1,61 @@
+.\"                                      Hey, EMACS: -*- nroff -*-
+.TH WMFSM 1 "Jan 13, 2001"
+.\" Please adjust this date whenever revising the manpage.
+.\"
+.\" Some roff macros, for reference:
+.\" .nh        disable hyphenation
+.\" .hy        enable hyphenation
+.\" .ad l      left justify
+.\" .ad b      justify to both left and right margins
+.\" .nf        disable filling
+.\" .fi        enable filling
+.\" .br        insert line break
+.\" .sp <n>    insert n+1 empty lines
+.\" for manpage-specific macros, see man(7)
+.SH NAME
+wmfsm \- shows the amount of disk space available
+.SH SYNOPSIS
+.BR wmfsm " [ " -bhfn " | " --help " | [ " --normal " | " --fire " ] [ " --blink " | " --noblink " ] [ " -display
+.IR display " ]"
+.RB " [ " --delay " | " -d
+.IR delay " ] ]"
+.SH DESCRIPTION
+\fBWmfsm\fP is a WindowMaker dock application that shows the amount of disc
+space available on mounted filesystems with coloured bars.
+.SH OPTIONS
+.TP
+.B \-\-normal, \-n
+Show the entire bars in the same colour.
+.TP
+.B \-\-fire, \-f
+Render the bars as gradients. You may switch between the normal and fire modes
+by mouse clicks anywhere on \fBwmfsm\fP.
+.TP
+.BR \-\-blink, \-b " | " \-\-noblink
+Do / do not blink if a filesystem is 95% full.
+.TP
+.BI \-display \ display
+Draw to
+.BR X (1)
+display \fIdisplay\fP.
+.TP
+.B \-d, \-\-delay \ \fIdelay\fP
+Wait \fIdelay\fP milliseconds to redraw the window.
+.TP
+.B \-h, \-\-help
+Show summary of options.
+.SH FILES
+You may exclude filesystems from being shown by \fBwmfsm\fP by listing them
+in the ~/.wmfsmrc file. This file has to look like this:
+.IP
+.nf
+[exclude]
+/dev/pts
+.fi
+.SH SEE ALSO
+.BR X (1x),
+.BR wmaker (1),
+.BR df (1).
+.SH AUTHOR
+This manual page was written by Arthur Korn <arthur@korn.ch> and
+modified by Chris Gray <cgray@tribsoft.com>
