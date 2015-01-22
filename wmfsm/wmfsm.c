@@ -1,11 +1,11 @@
 /*
  *
- *  	wmfsm-0.33 (C) 1999 Stefan Eilemann (Stefan.Eilemann@dlr.de)
- * 
+ *  	wmfsm (C) 1999 Stefan Eilemann (Stefan.Eilemann@dlr.de)
+ *
  *  		- Shows file system usage ala mfsm
- * 
- * 
- * 
+ *
+ *
+ *
  *
  * 	This program is free software; you can redistribute it and/or modify
  * 	it under the terms of the GNU General Public License as published by
@@ -19,12 +19,12 @@
  *
  * 	You should have received a copy of the GNU General Public License
  * 	along with this program (see the file COPYING); if not, write to the
- * 	Free Software Foundation, Inc., 59 Temple Place - Suite 330, 
- *      Boston, MA  02111-1307, USA
+ * 	Free Software Foundation, Inc., 51 Franklin St, Fifth Floor,
+ *      Boston, MA  02110-1301, USA
  *
  *
  *
- *      Changes: #include "../ChangeLog" 
+ *      Changes: #include "../ChangeLog"
  *
  */
 
@@ -32,8 +32,8 @@
 
 
 
-/*  
- *   Includes  
+/*
+ *   Includes
  */
 #include <stdio.h>
 #include <unistd.h>
@@ -83,24 +83,23 @@
   #if defined IRIX64
   # include <sys/types.h>
   # define STATFS(a,b) statfs(a,b,sizeof(struct statfs),0)
-  #elif defined linux 
+  #elif defined linux
   # define STATFS(a,b) statfs(a,b)
   #elif  defined(SunOS)
   # define STATFS(a,b) statfs(a,b,sizeof(struct statfs),0)
   #elif defined(__OpenBSD__) || defined(__FreeBSD__)
   # define STATFS(a,b) statfs(a,b)
   # include <sys/param.h>
-  #endif		
+  #endif
 */
 
 #define _GNU_SOURCE
 #include <getopt.h>
-/* 
+/*
  *  Delay between refreshes (in microseconds), uses the 10*DELAY_10
- *   coz irix has max of 100000L :(. 
+ *   coz irix has max of 100000L :(.
  */
 #define DELAY_10 99999L
-#define WMFSM_VERSION "0.33"
 #define LENMP 5			/*max 10, number char for mountpoint */
 
 /*modes for drawing*/
@@ -125,6 +124,7 @@ int blinkper = 95;
 char dummy[4096];
 char *myName;
 int delay = DELAY_10;
+char appearance[256] = "";
 
 int xpos[] = { 66, 71, 76, 81, 86, 91,	/* A B C D E F */
 	66, 71, 76, 81, 86, 91,	/* G H I J K L */
@@ -151,8 +151,8 @@ int ypos[] = { 4, 4, 4, 4, 4, 4,
 };
 
 
-/*  
- *   main  
+/*
+ *   main
  */
 int
 main(int argc, char *argv[])
@@ -162,8 +162,10 @@ main(int argc, char *argv[])
 	int dx, dy;
 	char hostname[100];
 	int i, j, k;
+	int xpm_free = 0;
 	int c, on[9] = { 1, 1, 1, 1, 1, 1, 1, 1, 1 };
 	struct statfs buffer;
+	char **pixmap;
 
 	/*
 	 *  Parse any command line arguments.
@@ -171,9 +173,21 @@ main(int argc, char *argv[])
 	myName = strdup(argv[0]);
 	ParseCMDLine(argc, argv);
 
+	if (appearance[0] == 0) {
+		pixmap = wmfsm_master_xpm;
+	} else {
+		if (XpmReadFileToData(appearance, &pixmap) != XpmSuccess) {
+			fprintf(stderr, "warning: could not read appearance file; using default.\n");
+			pixmap = wmfsm_master_xpm;
+		} else {
+			xpm_free = 1;
+		}
+	}
 
-	openXwindow(argc, argv, wmfsm_master_xpm, wmfsm_mask_bits, wmfsm_mask_width, wmfsm_mask_height);
+	openXwindow(argc, argv, pixmap, wmfsm_mask_bits, wmfsm_mask_width, wmfsm_mask_height);
 
+	if (xpm_free)
+		XpmFree(pixmap);
 
 #ifndef SVR4
 	if (gethostname(hostname, 100) != 0) {
@@ -191,7 +205,7 @@ main(int argc, char *argv[])
 		readFileSystems ();
 		usleep (100);
 
-		/* 
+		/*
 		 *   Process any pending X events.
 		 */
 		while (XPending(display)) {
@@ -374,8 +388,8 @@ main(int argc, char *argv[])
 		}
 
 		RedrawWindow();
-		/* 
-		 *  Wait for next update 
+		/*
+		 *  Wait for next update
 		 */
 		i = 0;
 		while (i < 10) {
@@ -401,15 +415,20 @@ ParseCMDLine(int argc, char *argv[])
 		{"blink", no_argument, &blink, 1},
 		{"noblink", no_argument, &blink, 0},
 		{"delay", required_argument, 0, 'd'},
+		{"appearance", required_argument, 0, 'a'},
 		{"help", no_argument, 0, 'h'},
+		{"version", no_argument, 0, 'v'},
 		{0, 0, 0, 0}
 	};
 	while (1) {
-		c = getopt_long(argc, argv, "bd:fhn", long_options, &option_index);
+		c = getopt_long(argc, argv, "a:bd:fhnv", long_options, &option_index);
 		if (c == -1)
 			break;
 		switch (c) {
 		case 0:	/* If blink or noblink was toggled */
+			break;
+		case 'a':
+			strcpy(appearance, optarg);
 			break;
 		case 'b':
 			blink = 1;
@@ -426,6 +445,9 @@ ParseCMDLine(int argc, char *argv[])
 		case 'n':
 			mode = NORMAL;
 			break;
+		case 'v':
+			printf("wmfsm version: %s\n", PACKAGE_VERSION);
+			exit(0);
 		case '?':
 			break;
 		default:
@@ -440,13 +462,13 @@ void
 print_usage()
 {
 
-	printf("\nwmfsm version: %s\n", WMFSM_VERSION);
-	printf("\nusage: wmfsm \n");
+	printf("usage: wmfsm \n");
 	printf("\t--normal, -n\t\tDraw bars in normal mode.\n");
-	printf("\t--fire, -f\t\t\tDraw bars in fire mode.\n");
+	printf("\t--fire, -f\t\tDraw bars in fire mode.\n");
 	printf("\t--[no]blink\t\tBlinks if a filesystem is 95 percent full.\n");
 	printf("\t-display <Display>\tUse alternate X display.\n");
 	printf("\t--delay <number>, -d\tUse a delay that is not the default.\n");
+	printf("\t--appearance <file>, -a\tSelect an appearance file.\n");
 	printf("\t-h\t\t\tDisplay help screen.\n");
 }
 
@@ -512,16 +534,18 @@ readFileSystems()
 	while (!feof(fp) && numberfs < 100) {
 #if defined(SunOS)
 		/* only five entries per row in /etc/mnttab */
-		fscanf(fp, "%s %s %s %s %s\n", dummy, mountPoint, fstype, options, dummy);
+		if (fscanf(fp, "%s %s %s %s %s\n", dummy, mountPoint, fstype, options, dummy) < 5)
+			fprintf(stderr, "%s:/etc/mnttab not in expected format\n", myName);
 #else
-		fscanf(fp, "%s %s %s %s %s %s\n", dummy, mountPoint, fstype, options, dummy, dummy);
+		if (fscanf(fp, "%s %s %s %s %s %s\n", dummy, mountPoint, fstype, options, dummy, dummy) < 6)
+			fprintf(stderr, "%s:/etc/mtab not in expected format\n", myName);
 #endif
 
 		if (
 #if defined IRIX64 || defined(SunOS)
 			   strcmp(fstype, "hwgfs") && strcmp(fstype, "autofs") && strcmp(fstype, "proc") && strcmp(fstype, "fd") && !strstr(options, "ignore")
 #elif defined linux
-			   strcmp(fstype, "proc") && strcmp(fstype, "shm")
+			   strcmp(fstype, "proc") && strcmp(fstype, "tmpfs") && strcmp(fstype, "devfs") && strcmp(fstype, "ramfs") && strcmp(fstype, "sysfs") && strcmp(fstype, "devpts") && strcmp(fstype, "usbfs")
 #else
 			   1
 #endif
