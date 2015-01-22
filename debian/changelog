@@ -1,4 +1,4 @@
-wmfsm (0.35-1) UNRELEASED; urgency=medium
+wmfsm (0.35-1) unstable; urgency=medium
 
   * New upstream release.
   * New maintainer (Closes: #776014).
@@ -8,12 +8,15 @@ wmfsm (0.35-1) UNRELEASED; urgency=medium
     - Bump Standards-Version to 3.9.6.
     - Bump versioned dependency on debhelper to >=9.
     - Add Homepage and Vcs-*.
-    - Remove unnecessary Build-Depends libx11-dev and libxext-dev.
+    - Remove unnecessary Build-Depend x11proto-core-dev.
     - Replace autotools-dev with dh-autoreconf in Build-Depends.
   * debian/copyright
     - Add DEP5 header, debian/*, and wmgeneral/* sections.
   * debian/docs
     - Add AUTHORS.
+  * debian/patches
+    - (handle_HOME_errors.patch) Avoid errors related to HOME environment
+      variable.
   * debian/rules
     - Update to use dh with dh_autoreconf.
     - Add get-orig-source target.
@@ -22,19 +25,19 @@ wmfsm (0.35-1) UNRELEASED; urgency=medium
   * debian/watch
     - New file.
 
- -- Doug Torrance <dtorrance@monmouthcollege.edu>  Thu, 22 Jan 2015 08:49:05 -0600
+ -- Doug Torrance <dtorrance@monmouthcollege.edu>  Thu, 22 Jan 2015 14:47:21 -0600
 
 wmfsm (0.34-13) unstable; urgency=low
 
   * QA upload.
-  * Replace deprecated build-dependency on x-dev with x11proto-core-dev.
-    (Closes: #515405)
-  * Add ${misc:Depends} substvar to binary package
+  * Replace deprecated build-dependency on x-dev with x11proto-core-dev
+    (Closes: #515405).
+  * Add ${misc:Depends} substvar to binary package.
   * Use "Applications/System/Administration" menu section instead of
     "Apps/System".
-  * debian/rules:
-    - Don't ignore errors in clean target
-    - Don't use deprecated "dh_clean -k"
+  * debian/rules
+    - Don't ignore errors in clean target.
+    - Don't use deprecated "dh_clean -k".
   * Update debian/copyright.
   * Bump Standards-Version to 3.8.2.
   * Move to debhelper 7.
@@ -43,175 +46,171 @@ wmfsm (0.34-13) unstable; urgency=low
 
 wmfsm (0.34-12) unstable; urgency=low
 
-  * orphaned: set maintainer to QA
+  * Orphan: set maintainer to QA.
 
  -- Arthur Korn <arthur@debian.org>  Mon, 24 Nov 2008 19:39:17 +0100
 
 wmfsm (0.34-11) unstable; urgency=low
 
-  * Standards-Version updated to 3.7.2.2 without changes
+  * Update Standards-Version to 3.7.2.2 without changes.
 
  -- Arthur Korn <arthur@debian.org>  Mon, 12 Feb 2007 21:22:47 +0100
 
 wmfsm (0.34-10) unstable; urgency=low
 
-  * configure: rebuild with autoconf 2.59a-7 to fix tests for X11
-    libraries, closes: #347639, #346889
+  * configure: Rebuild with autoconf 2.59a-7 to fix tests for X11
+    libraries (Closes: #347639, #346889).
 
  -- Arthur Korn <arthur@debian.org>  Sat, 14 Jan 2006 15:40:46 +0100
 
 wmfsm (0.34-9) unstable; urgency=low
 
-  * control: replaced build-dependency on xlibs-dev by detailed
-    build-dependencies according to the xlibs-split tool.
-    closes: #346889
+  * control: Replace build-dependency on xlibs-dev by detailed
+    build-dependencies according to the xlibs-split tool
+    (Closes: #346889).
 
  -- Arthur Korn <arthur@debian.org>  Mon,  9 Jan 2006 19:31:15 +0100
 
 wmfsm (0.34-8) unstable; urgency=low
 
-  * rules: fix timestamps of various autoconfig related files to
-    avoid unnecessary rebuild (and the dependency on autoconf).
-    closes: #321011
+  * rules: Fix timestamps of various autoconfig related files to
+    avoid unnecessary rebuild (and the dependency on autoconf)
+    (Closes: #321011).
 
  -- Arthur Korn <arthur@debian.org>  Wed,  3 Aug 2005 01:02:58 +0200
 
 wmfsm (0.34-7) unstable; urgency=low
 
-  * remove build dependency on automake1.6
-  * add build depnedency on autotools-dev and no update config.{sub,guess} in
-    clean target, correctly call ./configure
-  * standards version 3.6.2.0 without changes.
-  * update to debhelper compat level 4 with minor changes
-  * docs: remove NEWS (that file is empty?!) and TODO (out of date)
+  * Remove build dependency on automake1.6
+  * Add build dependency on autotools-dev and no update config.{sub,guess} in
+    clean target, correctly call ./configure.
+  * Bump Standards-Version to 3.6.2.0 without changes.
+  * Update to debhelper compat level 4 with minor changes.
+  * docs: Remove NEWS (that file is empty?!) and TODO (out of date).
 
  -- Arthur Korn <arthur@debian.org>  Sun, 31 Jul 2005 23:48:07 +0200
 
 wmfsm (0.34-6) unstable; urgency=low
 
-  * Fixed filesystem name corruption, thanks to Ralf Horstmann and Cristian
+  * Fix filesystem name corruption. Thanks to Ralf Horstmann and Cristian
     Ionescu-Idbohrn for the patch.
 
  -- Arthur Korn <arthur@korn.ch>  Wed, 25 Aug 2004 01:29:58 +0200
 
 wmfsm (0.34-5) unstable; urgency=low
 
-  * wmfsm.sample: adapted to the wealth of pseudo-fs in current linux
-    systems. closes: #226298
-  * debian/watch removed, upstream's dead.
-  * wmfsm.1: made a point on the strictness of wmfsmrc format, closes: #226274
-  * memleak news: avoid it if there are more than 9 filesystems too.
-  * Standards-Version 3.6.1.0 without changes.
+  * wmfsm.sample: Adapt to the wealth of pseudo-fs in current linux
+    systems (Closes: #226298).
+  * Remove debian/watch, upstream's dead.
+  * wmfsm.1: Make a point on the strictness of wmfsmrc format (Closes: #226274).
+  * Memleak news: avoid it if there are more than 9 filesystems too.
+  * Bumpt to Standards-Version 3.6.1.0 without changes.
 
  -- Arthur Korn <arthur@korn.ch>  Wed, 17 Mar 2004 13:04:33 +0100
 
 wmfsm (0.34-4) unstable; urgency=low
 
-  * fixed memleak introduced in 0.34-2 with the patch by Timo Benk.
+  * Fix memleak introduced in 0.34-2 with the patch by Timo Benk.
     global char *mp[] was assigned the result of stdup() repeatedly
     without free. My ugly fix is to free it all up at the beginning of
-    readFileSystems(). Now I'm a proud Perl coder ... closes: #196057
+    readFileSystems(). Now I'm a proud Perl coder ... (Closes: #196057).
 
  -- Arthur Korn <arthur@korn.ch>  Wed,  2 Jul 2003 23:05:21 +0200
 
 wmfsm (0.34-3) unstable; urgency=low
 
-  * ran aclocal and updated config.sub and config.guess
-    closes: #174686, #187602
+  * Run aclocal and update config.sub and config.guess
+    (Closes: #174686, #187602).
 
  -- Arthur Korn <arthur@korn.ch>  Wed,  2 Jul 2003 23:04:55 +0200
 
 wmfsm (0.34-2) unstable; urgency=low
 
-  * Added Build-Depends on automake1.6, closes: #175082
-  * updated config.{sub,guess} from autotools-dev.
-  * Applied patch by Timo Benk that makes wmfsm reread the filesystems list
-    during it's life, closes: #186826
+  * Add Build-Depends on automake1.6 (Closes: #175082).
+  * Update config.{sub,guess} from autotools-dev.
+  * Apply patch by Timo Benk that makes wmfsm reread the filesystems list
+    during its life (Closes: #186826).
 
  -- Arthur Korn <arthur@korn.ch>  Tue,  1 Apr 2003 11:25:11 +0200
 
 wmfsm (0.34-1) unstable; urgency=low
 
-  * New upstream release
-  * rules: new DEB_BUILD_OPTIONS syntax
-  * Standards-Version: 3.5.8
-  * building upstream changelog by concatenating Changelog{,.old}
+  * New upstream release.
+  * rules: New DEB_BUILD_OPTIONS syntax.
+  * Bump Standards-Version to 3.5.8.
+  * Build upstream changelog by concatenating Changelog{,.old}.
 
  -- Arthur Korn <arthur@korn.ch>  Tue, 17 Dec 2002 11:10:00 +0100
 
 wmfsm (0.33-2) unstable; urgency=low
 
-  * corrected speling error in description, closes: Bug#125491
+  * Correct spelling error in description (Closes: #125491).
 
  -- Arthur Korn <arthur@korn.ch>  Tue, 18 Dec 2001 22:13:56 +0100
 
 wmfsm (0.33-1) unstable; urgency=low
 
-  * New upstream release
+  * New upstream release.
     - autoconf
 
  -- Arthur Korn <arthur@korn.ch>  Sat, 20 Jan 2001 16:06:04 +0100
 
 wmfsm (0.31-9) unstable; urgency=low
 
-  * Added menu hints
+  * Add menu hints.
 
  -- Arthur Korn <arthur@korn.ch>  Sun, 14 Jan 2001 17:06:04 +0100
 
 wmfsm (0.31-8) unstable; urgency=low
 
-  * Adapted Build-Depends to new libs (see changelog of last version).
+  * Adapt Build-Depends to new libs (see changelog of last version).
 
  -- Arthur Korn <arthur@korn.ch>  Sat, 18 Nov 2000 21:42:29 +0100
 
 wmfsm (0.31-7) unstable; urgency=low
 
-  * recompile without libc5 dependency (libxpm4.7) (Closes: Bug#77277).
+  * Recompile without libc5 dependency (libxpm4.7) (Closes: #77277).
 
  -- Arthur Korn <arthur@korn.ch>  Fri, 17 Nov 2000 22:25:44 +0100
 
 wmfsm (0.31-6) unstable; urgency=low
 
-  * control: changed maintainer address to arthur@debian.org.
+  * control: Change maintainer address to arthur@debian.org.
   * This time including full source in upload.
 
  -- Arthur Korn <arthur@korn.ch>  Wed, 15 Nov 2000 20:36:47 +0100
 
 wmfsm (0.31-5) unstable; urgency=low
 
-  * wmfsm.1: wrote a manpage.
-  * control: changed section to utils.
+  * wmfsm.1: Write a manpage.
+  * control: Change section to utils.
 
  -- Arthur Korn <arthur@korn.ch>  Sun,  8 Oct 2000 10:43:21 +0200
 
 wmfsm (0.31-4) unstable; urgency=low
 
-  * rules: evaluating DEB_BUILD_OPTIONS now.
-  * rules: installing into /usr/bin, not /usr/X11R6/bin.
-  * undocumented: changed section from 1x to 1.
+  * rules: Evaluate DEB_BUILD_OPTIONS now.
+  * rules: Install into /usr/bin, not /usr/X11R6/bin.
+  * undocumented: Change section from 1x to 1.
   * menu: /usr/bin/X11/wmnd -> /usr/bin/wmnd.
 
  -- Arthur Korn <arthur@korn.ch>  Wed,  4 Oct 2000 13:24:02 +0200
 
 wmfsm (0.31-3) unstable; urgency=low
 
-  * rules: now building with -Wall -g -O2
+  * rules: Now build with -Wall -g -O2
 
  -- Arthur Korn <arthur@korn.ch>  Sat, 29 Jul 2000 17:11:56 +0200
 
 wmfsm (0.31-2) unstable; urgency=low
 
-  * Make the debianisation diff only contain debian/*
-  * control: made the description more verbose
+  * Make the debianisation diff only contain debian/*.
+  * control: make the description more verbose.
 
  -- Arthur Korn <arthur@korn.ch>  Fri, 14 Jul 2000 22:40:09 +0200
 
 wmfsm (0.31-1) unstable; urgency=low
 
-  * Initial Release.
+  * Initial release.
 
  -- Arthur Korn <arthur@korn.ch>  Tue, 11 Jul 2000 22:58:37 +0200
-
-Local variables:
-mode: debian-changelog
-End:
