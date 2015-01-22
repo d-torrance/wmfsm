@@ -3,7 +3,7 @@ Section: utils
 Priority: optional
 Maintainer: Doug Torrance <dtorrance@monmouthcollege.edu>
 Standards-Version: 3.9.6
-Build-Depends: debhelper (>= 9), libxpm-dev, x11proto-core-dev, autotools-dev
+Build-Depends: debhelper (>= 9), libxpm-dev, x11proto-core-dev, dh-autoreconf
 Homepage: http://windowmaker.org/dockapps/?name=wmfsm
 Vcs-Browser: https://github.com/d-torrance/wmfsm
 Vcs-Git: https://github.com/d-torrance/wmfsm.git
