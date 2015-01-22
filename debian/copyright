@@ -1,11 +1,24 @@
-Author: Chris Gray <cgray@tribsoft.com>
-Download: http://www.cs.mcgill.ca/~cgray4/
+Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: wmfsm
+Upstream-Contact: Window Maker Developers Team
+ <wmaker-dev@lists.windowmaker.org>
+Source: http://windowmaker.org/dockapps/?name=wmfsm
 
 Files: *
-Copyright:
- © 1999 Chris Gray <cgray@tribsoft.com>
- © 1999 Stefan Eilemann <Stefan.Eilemann@sgi.com>
-License: GPL-2
+Copyright: 1999 Chris Gray <cgray@tribsoft.com>
+	   1999 Stefan Eilemann <Stefan.Eilemann@sgi.com>
+License: GPL-2+
+
+Files: wmgeneral/*
+Copyright: 1998 Martijn Pieterse <pieterse@xs4all.nl>
+License: GPL-2+
+
+Files: debian/*
+Copyright: 2000-2008 Arthur Korn <arthur@debian.org>
+	   2015 Doug Torrance <dtorrance@monmouthcollege.edu>
+License: GPL-2+
+
+License: GPL-2+
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License version 2 as
  published by the Free Software Foundation.
