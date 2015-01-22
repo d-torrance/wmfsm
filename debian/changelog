@@ -1,3 +1,26 @@
+wmfsm (0.35-1) UNRELEASED; urgency=medium
+
+  * New upstream release.
+  * New maintainer (Closes: #XXX).
+  * debian/compat
+    - Bump to 9.
+  * debian/control
+    - Bump Standards-Version to 3.9.6.
+    - Bump versioned dependency on debhelper to >=9.
+    - Add Homepage and Vcs-*.
+    - Remove unnecessary Build-Depends libx11-dev and libxext-dev.
+    - Replace autotools-dev with dh-autoreconf in Build-Depends.
+  * debian/copyright
+    - Add DEP5 header, debian/*, and wmgeneral/* sections.
+  * debian/docs
+    - Add AUTHORS.
+  * debian/rules
+    - Update to use dh with dh_autoreconf.
+  * debian/source/format
+    - New file; use 3.0 (quilt).
+
+ -- Doug Torrance <dtorrance@monmouthcollege.edu>  Thu, 22 Jan 2015 08:49:05 -0600
+
 wmfsm (0.34-13) unstable; urgency=low
 
   * QA upload.
