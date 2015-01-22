@@ -1,7 +1,7 @@
 wmfsm (0.35-1) UNRELEASED; urgency=medium
 
   * New upstream release.
-  * New maintainer (Closes: #XXX).
+  * New maintainer (Closes: #776014).
   * debian/compat
     - Bump to 9.
   * debian/control
@@ -16,8 +16,11 @@ wmfsm (0.35-1) UNRELEASED; urgency=medium
     - Add AUTHORS.
   * debian/rules
     - Update to use dh with dh_autoreconf.
+    - Add get-orig-source target.
   * debian/source/format
     - New file; use 3.0 (quilt).
+  * debian/watch
+    - New file.
 
  -- Doug Torrance <dtorrance@monmouthcollege.edu>  Thu, 22 Jan 2015 08:49:05 -0600
 
