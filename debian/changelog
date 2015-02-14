@@ -1,3 +1,10 @@
+wmfsm (0.35-2) UNRELEASED; urgency=medium
+
+  * debian/copyright
+    - Add note about later version to GPL-2+ license text.
+
+ -- Doug Torrance <dtorrance@monmouthcollege.edu>  Sat, 14 Feb 2015 10:04:56 -0600
+
 wmfsm (0.35-1) unstable; urgency=medium
 
   * New upstream release.
